@@ -23,10 +23,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Instalar dependências
-        run: |
-          pip install -r requirements.txt  # Instala as dependências do projeto
-
       - name: Instalar requests
         run: |
           pip install requests  # Instala a biblioteca requests, se necessário
