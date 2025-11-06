@@ -15,5 +15,5 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Exibir segredo
-        run: echo "O segredo é:"
+        run: echo "O segredo é: ${{ secrets.segredo }}"
         shell: bash
