@@ -12,8 +12,17 @@ jobs:
 
     steps:
       - name: Checkout código
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Usando a versão mais recente do checkout
 
-      - name: Exibir segredo
-        run: echo "O segredo é: ${{ secrets.SEGREDO }}"
-        shell: bash
+      - name: Definir variável de ambiente a partir do segredo
+        run: |
+          echo "SEGREDO=${{ secrets.segredo }}" >> $GITHUB_ENV
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Você pode escolher a versão do Python que quiser
+
+      - name: Executar main.py
+        run: |
+          python main.py  # Executa seu script Python
