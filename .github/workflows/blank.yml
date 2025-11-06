@@ -1,0 +1,19 @@
+name: Exemplo de Ação GitHub
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Adicionando a opção de execução manual
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+
+      - name: Exibir segredo
+        run: echo "O segredo é:"
+        shell: bash
