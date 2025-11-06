@@ -12,17 +12,25 @@ jobs:
 
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3  # Usando a versão mais recente do checkout
+        uses: actions/checkout@v3
 
       - name: Definir variável de ambiente a partir do segredo
         run: |
-          echo "SEGREDO=${{ secrets.segredo }}" >> $GITHUB_ENV
+          echo "WEBHOOK_URL=${{ secrets.WEBHOOK_URL }}" >> $GITHUB_ENV
 
       - name: Configurar Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Você pode escolher a versão do Python que quiser
+          python-version: '3.x'
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt  # Instala as dependências do projeto
+
+      - name: Instalar requests
+        run: |
+          pip install requests  # Instala a biblioteca requests, se necessário
 
       - name: Executar main.py
         run: |
-          python main.py  # Executa seu script Python
+          python main.py  # Executa o script Python
